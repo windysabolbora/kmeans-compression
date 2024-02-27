@@ -8,26 +8,37 @@ def app():
     
     # Form 1 for login
     if st.session_state["current_form"] == "form1":
-        form1 = st.form("login")
-        username = form1.text_input("Enter username")
-        password = form1.text_input("Enter password", type="password")
-        submit1 = form1.form_submit_button("Login")
+        form1 = st.form("intro")
+        st.title('SVM Regressor')
+
+        #insert the rest of the information here
+        submit1 = form1.form_submit_button("Start")
     
         if submit1:
-            # Validate credentials and update session state
-            if username == "admin" and password == "secret":
-                st.session_state["current_form"] = "form2"
-            else:
-                st.error("Invalid credentials")
+            # Go to the next form
+            st.session_state["current_form"] = "form2"
     
-    # Form 2 for product selection
-    if st.session_state["current_form"] == "form2":
-        form2 = st.form("product_selection")
-        product = form2.selectbox("Choose your product", ["Product A", "Product B"])
+    # Form 2 for classifier training
+    if st.session_state["current_form"] == "form2":        
+        form2 = st.form("training")
+        st.title('Classifier Training')        
+        # insert the rest of the code to train the classifier here        
+
         submit2 = form2.form_submit_button("Submit")
     
         if submit2:
-            st.write(f"You selected {product}")
+            st.session_state["current_form"] = "form3"
+
+    # Form 3 for the price prediction using the trained model
+        form3 = st.form(""prediction)
+        st.title('Prediction')        
+
+        submit3 = form2.form_submit_button("Submit")
+
+        if submit3:
+            st.text('replace with the result of the prediction model.')
+            st.session_state["current_form"] = "form3"
+
             
 if __name__ == "__main__":
     app()
