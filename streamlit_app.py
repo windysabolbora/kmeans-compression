@@ -2,6 +2,7 @@ import streamlit as st
 
 # Define the Streamlit app
 def app():
+    st.title('SVM Regressor')
     # Session state to track form progress
     if "current_form" not in st.session_state:
         st.session_state["current_form"] = "form1"
@@ -9,7 +10,7 @@ def app():
     # Form 1 for login
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
-        form1.title('SVM Regressor')
+        form1.header('SVM Regressor')
         form1.write('(c) 2024 Louie F. Cervantes')
         form1.write('Department of Computer Science')
         form1.write('College of ICT')
@@ -26,7 +27,7 @@ def app():
     # Form 2 for classifier training
     if st.session_state["current_form"] == "form2":        
         form2 = st.form("training")
-        form2.title('Classifier Training')        
+        form2.subheader('Classifier Training')        
         # insert the rest of the code to train the classifier here        
 
         submit2 = form2.form_submit_button("Submit")
@@ -36,7 +37,7 @@ def app():
 
     # Form 3 for the price prediction using the trained model
         form3 = st.form("prediction")
-        form3.title('Prediction')        
+        form3.subheader('Prediction')        
 
         submit3 = form3.form_submit_button("Submit")
 
