@@ -30,7 +30,7 @@ def app():
             st.session_state["current_form"] = "form3"
 
     # Form 3 for the price prediction using the trained model
-        form3 = st.form(""prediction)
+        form3 = st.form("prediction")
         st.title('Prediction')        
 
         submit3 = form2.form_submit_button("Submit")
