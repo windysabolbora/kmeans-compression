@@ -7,7 +7,7 @@ def app():
     if "current_form" not in st.session_state:
         st.session_state["current_form"] = "form1"
     
-    # Form 1 for login
+    # Form 1 for introduction
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
         form1.header('SVM Regressor')
@@ -18,6 +18,8 @@ def app():
         form1.text('Replace with the actual description')
 
         #insert the rest of the information here
+
+
         submit1 = form1.form_submit_button("Start")
     
         if submit1:
@@ -38,6 +40,7 @@ def app():
     # Form 3 for the price prediction using the trained model
     if st.session_state["current_form"] == "form3":                    
         form3 = st.form("prediction")
+        
         form3.subheader('Prediction')
         form3.text('replace with the result of the prediction model.')                
 
