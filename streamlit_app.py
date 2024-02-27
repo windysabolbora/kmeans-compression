@@ -9,7 +9,7 @@ def app():
     # Form 1 for login
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
-        st.title('SVM Regressor')
+        form1.title('SVM Regressor')
 
         #insert the rest of the information here
         submit1 = form1.form_submit_button("Start")
