@@ -10,6 +10,11 @@ def app():
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
         form1.title('SVM Regressor')
+        form1.write('(c) 2024 Louie F. Cervantes')
+        form1.write('Department of Computer Science')
+        form1.write('College of ICT')
+        form1.write('West Visayas state University')
+        form1.text(('Replace with the actual description')
 
         #insert the rest of the information here
         submit1 = form1.form_submit_button("Start")
@@ -21,7 +26,7 @@ def app():
     # Form 2 for classifier training
     if st.session_state["current_form"] == "form2":        
         form2 = st.form("training")
-        st.title('Classifier Training')        
+        form2.title('Classifier Training')        
         # insert the rest of the code to train the classifier here        
 
         submit2 = form2.form_submit_button("Submit")
@@ -31,7 +36,7 @@ def app():
 
     # Form 3 for the price prediction using the trained model
         form3 = st.form("prediction")
-        st.title('Prediction')        
+        form3.title('Prediction')        
 
         submit3 = form3.form_submit_button("Submit")
 
