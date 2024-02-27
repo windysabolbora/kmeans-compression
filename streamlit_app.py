@@ -36,6 +36,7 @@ def app():
             st.session_state["current_form"] = "form3"
 
     # Form 3 for the price prediction using the trained model
+    if st.session_state["current_form"] == "form3":                    
         form3 = st.form("prediction")
         form3.subheader('Prediction')        
 
