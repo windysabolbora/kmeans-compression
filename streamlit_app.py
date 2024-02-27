@@ -33,7 +33,7 @@ def app():
         form3 = st.form("prediction")
         st.title('Prediction')        
 
-        submit3 = form2.form_submit_button("Submit")
+        submit3 = form3.form_submit_button("Submit")
 
         if submit3:
             st.text('replace with the result of the prediction model.')
