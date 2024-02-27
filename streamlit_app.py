@@ -30,7 +30,7 @@ def app():
         form2.subheader('Classifier Training')        
         # insert the rest of the code to train the classifier here        
 
-        submit2 = form2.form_submit_button("Submit")
+        submit2 = form2.form_submit_button("Train")
     
         if submit2:
             st.session_state["current_form"] = "form3"
@@ -38,13 +38,12 @@ def app():
     # Form 3 for the price prediction using the trained model
     if st.session_state["current_form"] == "form3":                    
         form3 = st.form("prediction")
-        form3.subheader('Prediction')        
+        form3.subheader('Prediction')
+        form3.text('replace with the result of the prediction model.')                
 
-        submit3 = form3.form_submit_button("Submit")
-
+        submit3 = form3.form_submit_button("Reset")
         if submit3:
-            st.text('replace with the result of the prediction model.')
-            st.session_state["current_form"] = "form3"
+            st.session_state["current_form"] = "form1"
 
             
 if __name__ == "__main__":
