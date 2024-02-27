@@ -14,7 +14,7 @@ def app():
         form1.write('Department of Computer Science')
         form1.write('College of ICT')
         form1.write('West Visayas state University')
-        form1.text(('Replace with the actual description')
+        form1.text('Replace with the actual description')
 
         #insert the rest of the information here
         submit1 = form1.form_submit_button("Start")
