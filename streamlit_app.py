@@ -33,7 +33,7 @@ def display_form1():
 
     if submit1:
         # Go to the next form
-        st.session_state["current_form"] = 2
+        display_form2()
 
 def display_form2():
     form2 = st.form("training")
@@ -42,7 +42,7 @@ def display_form2():
 
     submit2 = form2.form_submit_button("Train")
     if submit2:
-        st.session_state["current_form"] = 3
+        display_form3()
 
 def display_form3():
     form3 = st.form("prediction")
@@ -63,6 +63,7 @@ def display_form3():
     submit3 = form3.form_submit_button("Reset")
     if submit3:
         st.session_state.clear()  # Reset all session state
+        display_form1()
 
 
 if __name__ == "__main__":
