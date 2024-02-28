@@ -2,7 +2,7 @@ import streamlit as st
 
 # Define the Streamlit app
 def app():
-    st.title('SVM Regressor')
+    st.title('Application Title')
     # Session state to track form progress
     if "current_form" not in st.session_state:
         st.session_state["current_form"] = "form1"
@@ -10,7 +10,7 @@ def app():
     # Form 1 for introduction
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
-        form1.header('SVM Regressor')
+        form1.header('Predicting Housing Cost using the SVM Regressor')
         form1.write("""
             (c) 2024 Louie F. Cervantes
             Department of Computer Science
@@ -18,8 +18,7 @@ def app():
             West Visayas state University
         """)
                     
-        form1.text('Replace with the actual description')
-        
+        form1.write('Replace with the actual description')        
         #insert the rest of the information here
 
         submit1 = form1.form_submit_button("Start")
