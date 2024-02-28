@@ -40,8 +40,10 @@ def display_form2():
     form2 = st.form("training")
     form2.subheader('Classifier Training')        
     # insert the rest of the code to train the classifier here        
+    form2.write('Display the training result')
+    
+    submit2 = form2.form_submit_button("Train")
 
-    submit2 = form2.form_submit_button("Training")
     if submit2:
         st.session_state["current_form"] = 3
 
