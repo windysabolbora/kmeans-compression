@@ -32,7 +32,7 @@ def display_form1():
 
     if submit1:
         # Go to the next form
-        st.session_state["current_form"] == 2
+        st.session_state["current_form"] = 2
 
 def display_form2():
     form2 = st.form("training")
