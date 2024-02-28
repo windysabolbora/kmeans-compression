@@ -49,7 +49,6 @@ def display_form2():
     submit2 = form2.form_submit_button("Train")
 
     if submit2:        
-        form2 = [];
         display_form3()
 
 def display_form3():
