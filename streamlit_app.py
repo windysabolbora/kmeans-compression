@@ -15,7 +15,6 @@ def app():
     elif st.session_state["current_form"] == 3:
         display_form3()
 
-
 def display_form1():
     form1 = st.form("intro")
     form1.subheader('About the Classifier')
@@ -33,7 +32,6 @@ def display_form1():
 
     if submit1:
         # Go to the next form
-        display_form2()
         st.session_state["current_form"] == 2
 
 def display_form2():
@@ -41,7 +39,7 @@ def display_form2():
     form2.subheader('Classifier Training')        
     # insert the rest of the code to train the classifier here        
     form2.write('Display the training result')
-    
+
     submit2 = form2.form_submit_button("Train")
 
     if submit2:
