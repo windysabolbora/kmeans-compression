@@ -11,14 +11,15 @@ def app():
     if st.session_state["current_form"] == "form1":
         form1 = st.form("intro")
         form1.header('SVM Regressor')
-        form1.write('(c) 2024 Louie F. Cervantes')
-        form1.write('Department of Computer Science')
-        form1.write('College of ICT')
-        form1.write('West Visayas state University')
+        form1.write("""
+            (c) 2024 Louie F. Cervantes
+            Department of Computer Science
+            College of Information and Communications Technology
+            West Visayas state University
+        """
         form1.text('Replace with the actual description')
-
+        
         #insert the rest of the information here
-
 
         submit1 = form1.form_submit_button("Start")
     
@@ -40,7 +41,7 @@ def app():
     # Form 3 for the price prediction using the trained model
     if st.session_state["current_form"] == "form3":                    
         form3 = st.form("prediction")
-        
+
         form3.subheader('Prediction')
         form3.text('replace with the result of the prediction model.')                
 
