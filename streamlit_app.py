@@ -16,7 +16,8 @@ def app():
             Department of Computer Science
             College of Information and Communications Technology
             West Visayas state University
-        """
+        """)
+                    
         form1.text('Replace with the actual description')
         
         #insert the rest of the information here
