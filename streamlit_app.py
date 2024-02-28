@@ -52,8 +52,10 @@ def app():
             max_value=6,
             value=2,  # Initial value
         )
-        
-        if form3.button('Predict'):                
+
+        predictbn = form3.form_submit_button("Predict")
+        if predictbn:
+            st.session_state["current_form"] = "form1"                    
             form3.text('User selected nclusters = ' + str(n_clusters))
 
         submit3 = form3.form_submit_button("Reset")
