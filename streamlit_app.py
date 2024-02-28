@@ -2,6 +2,9 @@ import streamlit as st
 
 # Define the Streamlit app
 def app():
+    if "reset_app" not in st.session_state:
+    st.session_state.reset_app = False
+    
     st.title('Predicting Housing Cost using the SVM Regressor')
     # Use session state to track the current form
     if "current_form" not in st.session_state:
@@ -69,8 +72,7 @@ def display_form3():
     submit3 = form3.form_submit_button("Reset")
     if submit3:
         st.session_state.clear()  # Reset all session state
-        st.session_state["current_form"] = 1
-        display_form1()
+        st.session_state.reset_app = True
 
 if __name__ == "__main__":
     app()
