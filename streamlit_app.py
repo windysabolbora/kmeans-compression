@@ -68,8 +68,6 @@ def display_form3():
     submit3 = form3.form_submit_button("Reset")
     if submit3:
         st.session_state.clear()  # Reset all session state
-        display_form1()        
-
 
 if __name__ == "__main__":
     app()
