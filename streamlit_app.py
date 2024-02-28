@@ -14,10 +14,9 @@ def app():
         display_form2()
     elif st.session_state["current_form"] == 3:
         display_form3()
-        st.session_state["current_form"] = 2
+
 
 def display_form1():
-    st.session_state["current_form"] = 1
     form1 = st.form("intro")
     form1.subheader('About the Classifier')
     form1.write("""
@@ -66,6 +65,7 @@ def display_form3():
     submit3 = form3.form_submit_button("Reset")
     if submit3:
         st.session_state.clear()  # Reset all session state
+        st.session_state["current_form"] = 1
 
 if __name__ == "__main__":
     app()
