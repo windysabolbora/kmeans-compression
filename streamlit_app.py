@@ -58,7 +58,7 @@ def app():
 
         submit3 = form3.form_submit_button("Reset")
         if submit3:
-            st.session_state["current_form"] = "form1"
+            st.session_state.clear()  # Reset all session state
 
             
 if __name__ == "__main__":
