@@ -35,9 +35,9 @@ def display_form1():
     if submit1:
         # Go to the next form
         display_form2()
+        st.session_state["current_form"] == 2
 
 def display_form2():
-    st.session_state["current_form"] = 2
     form2 = st.form("training")
     form2.subheader('Classifier Training')        
     # insert the rest of the code to train the classifier here        
@@ -48,7 +48,6 @@ def display_form2():
         st.session_state["current_form"] = 3
 
 def display_form3():
-    st.session_state["current_form"] = 3
     form3 = st.form("prediction")
     form3.subheader('Prediction')
     form3.text('replace with the result of the prediction model.')
