@@ -45,6 +45,7 @@ def display_form2():
 
     if submit2:
         st.session_state["current_form"] = 3
+        display_form3()
 
 def display_form3():
     form3 = st.form("prediction")
@@ -66,6 +67,7 @@ def display_form3():
     if submit3:
         st.session_state.clear()  # Reset all session state
         st.session_state["current_form"] = 1
+        display_form1()
 
 if __name__ == "__main__":
     app()
