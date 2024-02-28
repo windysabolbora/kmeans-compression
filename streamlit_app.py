@@ -2,7 +2,6 @@ import streamlit as st
 
 # Define the Streamlit app
 def app():
-
     st.title('Predicting Housing Cost using the SVM Regressor')
     # Use session state to track the current form
     if "current_form" not in st.session_state:
