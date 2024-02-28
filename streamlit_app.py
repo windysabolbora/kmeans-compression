@@ -44,7 +44,17 @@ def app():
         form3 = st.form("prediction")
 
         form3.subheader('Prediction')
-        form3.text('replace with the result of the prediction model.')                
+        form3.text('replace with the result of the prediction model.')
+
+        n_clusters = form3.slider(
+            label="Number of Clusters:",
+            min_value=2,
+            max_value=6,
+            value=2,  # Initial value
+        )
+        
+        if form3.button('Predict'):                
+            form3.text('User selected nclusters = ' + str(n_clusters))
 
         submit3 = form3.form_submit_button("Reset")
         if submit3:
