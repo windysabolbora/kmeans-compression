@@ -77,7 +77,6 @@ def display_form1():
     submit1 = form1.form_submit_button("Start")
 
     if submit1:
-        form1 = [];
         # Go to the next form        
         display_form2()
 
