@@ -77,8 +77,10 @@ def display_form2():
     form2.subheader('Classifier Training')        
 
     flower = load_sample_image('flower.jpg')
+    fig, ax = plt.subplots(figsize=(6, 3))
     ax = plt.axes(xticks=[], yticks=[])
     ax.imshow(flower)
+    form2.pyplot(fig)
 
     data = flower/255.0
     data = data.reshape(427 * 640, 3)
