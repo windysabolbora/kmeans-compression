@@ -1,4 +1,5 @@
 import streamlit as st
+from sklearn.datasets import load_sample_image
 
 # Define the Streamlit app
 def app():
@@ -72,9 +73,20 @@ def display_form2():
     st.session_state["current_form"] = 2
     form2 = st.form("training")
     form2.subheader('Classifier Training')        
-    # insert the rest of the code to train the classifier here        
-    form2.write('Display the training result')
 
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    flower = load_sample_image('flower.jpg')
+    ax = plt.axes(xticks=[], yticks=[])
+    ax.imshow(flower)
+
+    data = flower/255.0
+    data = data.reshape(427 * 640, 3)
+    data.shape
+
+    plot_pixels(form2, data, title= 'Input color space: 16 million possible colors')
+    
     submit2 = form2.form_submit_button("Train")
 
     if submit2:        
@@ -101,6 +113,21 @@ def display_form3():
     if submit3:
         st.session_state.reset_app = True
         st.session_state.clear()
+
+def plot_pixels(form, data, title, colors=None, N=1000):
+    if colors is None:
+        colors = data
+        rng = np.random.RandomState(0)
+        i = rng.permutation(data.shape[0])[:N]
+        colors = colors[i]
+        R, G, B = data[i].T
+        fig, ax = plt.subplots(1, 2, figsize=(16, 6))
+        ax[0].scatter(R, G, color=colors, marker='.')
+        ax[0].set(xlabel='red', ylabel='green', xlim=(0, 1), ylim=(0, 1))
+        ax[1].scatter(R, B, color=colors, marker='.')
+        ax[1].set(xlabel='red', ylabel='blue', xlim=(0, 1), ylim=(0, 1))  
+        fig.suptitle(title, size=20) 
+        form.pyplot(fig)
 
 if __name__ == "__main__":
     app()
