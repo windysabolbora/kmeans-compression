@@ -1,5 +1,7 @@
 import streamlit as st
 from sklearn.datasets import load_sample_image
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Define the Streamlit app
 def app():
@@ -73,9 +75,6 @@ def display_form2():
     st.session_state["current_form"] = 2
     form2 = st.form("training")
     form2.subheader('Classifier Training')        
-
-    import matplotlib.pyplot as plt
-    import numpy as np
 
     flower = load_sample_image('flower.jpg')
     ax = plt.axes(xticks=[], yticks=[])
