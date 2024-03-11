@@ -18,6 +18,11 @@ def app():
     if "data" not in st.session_state:
         st.session_state.data = []
 
+    if "image" not in st.session_state:
+        st.session_state.image = []
+
+
+
     # Display the appropriate form based on the current form state
     if st.session_state["current_form"] == 1:
         display_form1()
@@ -81,19 +86,19 @@ def display_form2():
     form2 = st.form("view_image")
     form2.subheader('Original Image')        
 
-    flower = load_sample_image('flower.jpg')
+    st.session_state.image = load_sample_image('flower.jpg')
     fig, ax = plt.subplots(figsize=(6, 3))
     ax = plt.axes(xticks=[], yticks=[])
     ax.imshow(flower)
     form2.pyplot(fig)
 
-    data = flower/255.0
+    data = st.session_state.image / 255.0
     data = data.reshape(427 * 640, 3)
 
     plot_pixels(form2, data, title= 'Input color space: 16 million possible colors')
     st.session_state['data'] = data
+    
     submit2 = form2.form_submit_button("Compress")
-
     if submit2:        
         display_form3()
 
@@ -102,15 +107,14 @@ def display_form3():
     form3 = st.form("compressed")
     form3.subheader('Compressed Image')
     
-    kmeans = MiniBatchKMeans(16)
-    
+    kmeans = MiniBatchKMeans(16)    
     data = st.session_state.data
-
+    image = st.session_state.image
     kmeans.fit(data)
     new_colors = kmeans.cluster_centers_[kmeans.predict(data)]
 
     plot_pixels(data, colors = new_colors, title='Reduced color space: 16 colors')
-    flower_recolored = new_colors.reshape(flower.shape)
+    flower_recolored = new_colors.reshape(image.shape)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
     fig.subplots_adjust(wspace=0.05)
