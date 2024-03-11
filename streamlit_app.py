@@ -84,9 +84,21 @@ def display_form1():
 def display_form2():
     st.session_state["current_form"] = 2
     form2 = st.form("view_image")
-    form2.subheader('Original Image')        
 
-    st.session_state.image = load_sample_image('flower.jpg')
+    # Define the options for the radio button
+    options = ["image 1", "image 2"]
+
+    # Create the radio button and store the selected option
+    selected_option = st.radio("Select an image:", options)
+
+    # Display a message based on the selected option (optional)
+    if selected_option == "Option 1":
+        st.session_state.image = load_sample_image('flower.jpg')
+    else:
+        st.session_state.image = load_sample_image('china.jpg')
+
+    form2.subheader('Original Image')        
+    
     fig, ax = plt.subplots(figsize=(6, 3))
     ax = plt.axes(xticks=[], yticks=[])
     ax.imshow(st.session_state.image)
