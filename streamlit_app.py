@@ -85,13 +85,13 @@ def display_form2():
     form2 = st.form("view_image")
 
     # Define the options for the radio button
-    options = ["image 1", "image 2"]
+    options = ["Image 1", "Image 2"]
 
     # Create the radio button and store the selected option
     selected_option = st.radio("Select an image:", options)
 
     # Display a message based on the selected option (optional)
-    if selected_option == "Option 1":
+    if selected_option == "Image 1":
         st.session_state.image = load_sample_image('flower.jpg')
     else:
         st.session_state.image = load_sample_image('china.jpg')
