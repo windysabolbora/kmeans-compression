@@ -133,7 +133,7 @@ def display_form3():
     ax[0].set_title('Original Image', size = 16)
     ax[1].imshow(flower_recolored)
     ax[1].set_title('16-color image', size=16)
-    form3.pylot(fig)
+    form3.pyplot(fig)
 
     submit3 = form3.form_submit_button("Reset")
     if submit3:
