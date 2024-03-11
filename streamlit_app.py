@@ -2,6 +2,8 @@ import streamlit as st
 from sklearn.datasets import load_sample_image
 import matplotlib.pyplot as plt
 import numpy as np
+#import warnings; warnings.simplefilter('ignore')
+from sklearn.cluster import MiniBatchKMeans
 
 # Define the Streamlit app
 def app():
@@ -12,6 +14,9 @@ def app():
     # Use session state to track the current form
     if "current_form" not in st.session_state:
         st.session_state["current_form"] = 1    
+
+    if "data" not in st.session_state:
+        st.session_state.data = []
 
     # Display the appropriate form based on the current form state
     if st.session_state["current_form"] == 1:
@@ -73,7 +78,7 @@ def display_form1():
 
 def display_form2():
     st.session_state["current_form"] = 2
-    form2 = st.form("training")
+    form2 = st.form("view_image")
     form2.subheader('Original Image')        
 
     flower = load_sample_image('flower.jpg')
@@ -84,31 +89,36 @@ def display_form2():
 
     data = flower/255.0
     data = data.reshape(427 * 640, 3)
-    data.shape
 
     plot_pixels(form2, data, title= 'Input color space: 16 million possible colors')
-    
-    submit2 = form2.form_submit_button("Train")
+    st.session_state['data'] = data
+    submit2 = form2.form_submit_button("Compress")
 
     if submit2:        
         display_form3()
 
 def display_form3():
     st.session_state["current_form"] = 3
-    form3 = st.form("prediction")
-    form3.subheader('Prediction')
-    form3.text('replace with the result of the prediction model.')
+    form3 = st.form("compressed")
+    form3.subheader('Compressed Image')
+    
+    kmeans = MiniBatchKMeans(16)
+    
+    data = st.session_state.data
 
-    n_clusters = form3.slider(
-        label="Number of Clusters:",
-        min_value=2,
-        max_value=6,
-        value=2,  # Initial value
-    )
+    kmeans.fit(data)
+    new_colors = kmeans.cluster_centers_[kmeans.predict(data)]
 
-    predictbn = form3.form_submit_button("Predict")
-    if predictbn:                    
-        form3.text('User selected nclusters = ' + str(n_clusters))
+    plot_pixels(data, colors = new_colors, title='Reduced color space: 16 colors')
+    flower_recolored = new_colors.reshape(flower.shape)
+
+    fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
+    fig.subplots_adjust(wspace=0.05)
+    ax[0].imshow(flower)
+    ax[0].set_title('Original Image', size = 16)
+    ax[1].imshow(flower_recolored)
+    ax[1].set_title('16-color image', size=16)
+    form3.pylot(fig)
 
     submit3 = form3.form_submit_button("Reset")
     if submit3:
