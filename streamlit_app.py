@@ -89,7 +89,7 @@ def display_form2():
     st.session_state.image = load_sample_image('flower.jpg')
     fig, ax = plt.subplots(figsize=(6, 3))
     ax = plt.axes(xticks=[], yticks=[])
-    ax.imshow(flower)
+    ax.imshow(st.session_state.image)
     form2.pyplot(fig)
 
     data = st.session_state.image / 255.0
