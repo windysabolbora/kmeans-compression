@@ -113,7 +113,7 @@ def display_form3():
     kmeans.fit(data)
     new_colors = kmeans.cluster_centers_[kmeans.predict(data)]
 
-    plot_pixels(data, colors = new_colors, title='Reduced color space: 16 colors')
+    plot_pixels(form3, data, colors = new_colors, title='Reduced color space: 16 colors')
     flower_recolored = new_colors.reshape(image.shape)
 
     fig, ax = plt.subplots(1, 2, figsize=(16,6), subplot_kw=dict(xticks=[], yticks=[]))
