@@ -88,7 +88,7 @@ def display_form2():
     options = ["Image 1", "Image 2"]
 
     # Create the radio button and store the selected option
-    selected_option = form2.radio("Select an image:", options)
+    selected_option = st.sidebar.radio("Select an image:", options)
 
     # Display a message based on the selected option (optional)
     if selected_option == "Image 1":
